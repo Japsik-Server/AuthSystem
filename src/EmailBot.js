@@ -73,14 +73,14 @@ bot.once('ready', async () => {
 
         })
     })
-    bot.user.setActivity("/verify | Website", {
-        type: "PLAYING", url: "https://emailbot.larskaesberg.de"
+    bot.user.setActivity("/verify | Discord", {
+        type: "PLAYING", url: "https://discord.gg/japsik"
     })
 });
 
 setInterval(function () {
-    bot.user.setActivity("/verify | Website", {
-        type: "PLAYING", url: "https://emailbot.larskaesberg.de"
+    bot.user.setActivity("/verify | Discord", {
+        type: "PLAYING", url: "https://discord.gg/japsik"
     })
 }, 3600000);
 
