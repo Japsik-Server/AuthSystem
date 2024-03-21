@@ -1,4 +1,4 @@
-let {smtpHost, email, username, password, isGoogle, isSecure, smtpPort} = require("../../config/config.json");
+let {smtpHost, email, username, password, isGoogle, isSecure, smtpPort} = require("../../config.json");
 
 const nodemailer = require("nodemailer");
 const smtpTransport = require("nodemailer-smtp-transport");
@@ -18,9 +18,6 @@ module.exports = class MailSender {
             auth: {
                 user: username,
                 pass: password
-            },
-            tls: {
-              rejectUnauthorized: false
             }
         }
         if (isGoogle) nodemailerOptions["service"] = "gmail"
@@ -34,9 +31,9 @@ module.exports = class MailSender {
     async sendEmail(toEmail, code, name, message, emailNotify, callback) {
         await database.getServerSettings(this.userGuilds.get(message.author.id).id, serverSettings => {
             const mailOptions = {
-                from: '"Email Verification Bot ✉️" <'+ email +'>',
+                from: '"SketchTown 인증 ✉️" <'+ email +'>',
                 to: toEmail,
-                subject: name + ' Discord Email Verification',
+                subject: '[' + name + '] 가입 인증 메일입니다.',
                 text: getLocale(serverSettings.language, "emailText", name, code)
             };
 
